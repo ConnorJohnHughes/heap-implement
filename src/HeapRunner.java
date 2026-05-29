@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -21,6 +22,8 @@ public class HeapRunner {
         Scanner scanner = new Scanner(System.in);
 
         // TODO: Construct your Heap here.
+        Heap heap = new Heap();
+
 
         System.out.println("=== Heap Tester ===");
 
@@ -41,20 +44,37 @@ public class HeapRunner {
  
                 // TODO: Call your "add" method on the heap, passing in 'value'.
                 // TODO: Print message letting user know value was added
+            
+                heap.addHeap(value);
+
+                System.out.println("Added to Heap:  " + value);
+                heap.printHeap();
+                
  
             } else if (choice.equals("p") || choice.equals("pop")) {
                 // TODO: Call your "pop" method and print the result.
                 // Properly handle the case of an empty heap!
 
+                heap.popHeap();
+                heap.printHeap();
+
             } else if (choice.equals("k") || choice.equals("peek")) {
                 // TODO: Call your "peek" method and print the result
                 // Properly handle the case of an empty heap!
+                heap.peekHeap();
+                heap.printHeap();
 
             } else if (choice.equals("s") || choice.equals("size")) {
                 // TODO: Call your "size" method and print the result
 
+                heap.sizeHeap();
+                heap.printHeap();
+
             } else if (choice.equals("e") || choice.equals("empty")) {
                 // TODO: Call your "isEmpty" method and print the result
+
+                heap.emptyHeap();
+                heap.printHeap();
 
             } else if (choice.equals("q") || choice.equals("quit")) {
                 break;

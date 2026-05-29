@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * A min-heap. 
  * 
@@ -23,4 +25,42 @@
  */
 public class Heap {
 
+    private ArrayList<Integer> heap;
+
+    public Heap(){
+        heap = new ArrayList<>();
+    }
+
+    // adds one value now, need to implement heap behavior
+	public void addHeap(int value){
+        heap.add(value);
+    }
+
+    // used to print out heap for debug
+    public void printHeap(){
+        System.out.println(heap);
+    }
+
+    // look at 0 index
+    public void peekHeap(){
+        System.out.println(heap.get(0));
+    }
+
+    // remove num at top of heap/at 0 index
+    public void popHeap(){
+        heap.remove(0);
+    }
+
+    // get size of heap
+    public void sizeHeap(){
+        System.out.println(heap.size());
+    }
+
+    // check if heap is empty
+    public void emptyHeap(){
+        System.out.println(heap.isEmpty());
+    }
+
+    
+  
 }
