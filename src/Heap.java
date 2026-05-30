@@ -31,9 +31,40 @@ public class Heap {
         heap = new ArrayList<>();
     }
 
-    // adds one value now, need to implement heap behavior
+    /**
+     * Provides access to the heap's internal structure for JUnit testing.
+     */
+    public ArrayList<Integer> getHeap() {
+        return heap;
+    }
+
+    /**
+     * Adds a value to a min heap and bubbles the value up till min heap contract is satisfied
+     * @param value
+     */
 	public void addHeap(int value){
+        // add value to the heap (next open spot at the left side of the tree)
         heap.add(value);
+        // get the index of the value just added
+        int currentIndex = heap.size() - 1;
+        // get the parent index of the value just added
+        int parentIndex = (currentIndex - 1) / 2;
+
+        // if current index is equal to 0, currentIndex is the root index
+        if (currentIndex == 0) return;
+        
+        // loop while parent value is greater than current value
+        while (heap.get(parentIndex) > heap.get(currentIndex)) {
+            int currentVal = heap.get(currentIndex);
+            // use set method to move parent value into current index
+            heap.set(currentIndex, heap.get(parentIndex));
+            // use set method to move current value into parent index
+            heap.set(parentIndex, currentVal);
+            // change current index to parent index (the value that just bubbled up is now in the parents position)
+            currentIndex = parentIndex;
+            // recalculate parent index
+            parentIndex = (currentIndex - 1) / 2;
+        }
     }
 
     // used to print out heap for debug
