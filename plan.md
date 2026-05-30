@@ -17,3 +17,12 @@ check to see if the array is empty. maybe another simple loop and if the the cou
 
 # Quit
 looks like the app runs on a while loop. so either a break or a boolean to leave the loop
+
+# Add getHeap method
+provides access to the heap's internal structure for JUnit testing.
+
+# Junit tests
+test each method thoroughly
+
+# Private variables
+heap - backed by an arraylist
