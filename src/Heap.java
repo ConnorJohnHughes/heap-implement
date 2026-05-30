@@ -79,8 +79,75 @@ public class Heap {
 
     // remove num at top of heap/at 0 index
     public void popHeap(){
-        heap.remove(0);
-    }
+ 
+        // check if empty
+        if (heap.isEmpty()) {
+            return;
+        }
+
+        // the new root value is the last value added to array
+        int newRoot = heap.get(heap.size() - 1);
+
+        // start index at 0
+        int index = 0;
+
+        // remove last element
+        heap.remove(heap.size()- 1);
+
+        // return if empty
+        if (heap.isEmpty()) {
+            return;
+        }
+
+        // set the root value to the value of the last item in array if its not empty
+        if(heap.size() > 0){
+            heap.set(0, newRoot);
+        }
+        
+
+        // get index of left and right child
+        int leftChild = (index * 2) + 1;
+        int rightChild = (index * 2) + 2;
+
+        // keep looping if the parent value is greater than the child values
+        // the leftchild should be filled before right child so check the leftchild index here
+        while (leftChild < heap.size()){
+
+            // used to find which path to take
+            int pathIndex;
+
+            // decides which path to take from left or right child . also checks if there is a right child 
+            if(rightChild < heap.size() && heap.get(rightChild) < heap.get(leftChild)){
+                pathIndex = rightChild;
+            } else{
+                // no right child so set path to the left 
+                pathIndex = leftChild;
+            }
+
+            // path value of the path index depending on right or left child
+            int pathValue = heap.get(pathIndex);
+
+
+            // is the index value greater than the path child
+            if(heap.get(index) > pathValue){
+                // if so the child gets moved up to parent
+                heap.set(index, pathValue);
+                // the parent gets moved down to child
+                heap.set(pathIndex, newRoot);
+                // the new index was the child index that was being replaced
+                index = pathIndex;
+                
+                // recalucalet child indexes
+                leftChild = (index * 2) + 1;
+                rightChild = (index * 2) + 2;
+            } else{
+                // if all good then leave the loop
+                break;
+            }
+            }
+        }
+
+    
 
     // get size of heap
     public void sizeHeap(){
